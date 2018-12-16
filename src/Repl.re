@@ -26,6 +26,24 @@ type action =
    Needs to be **after** state and action declarations! */
 let component = ReasonReact.reducerComponent("Example");
 
+module Styles = {
+  /*Open the Css module, so we can access the style properties below without prefixing them with Css.*/
+  open Css;
+  open Calc;
+
+  let input = style([
+    fontFamily("monospace"),
+    fontSize(px(16)),
+    color(hex("FFFFFF")),
+    backgroundColor(transparent),
+    borderStyle(none),
+    width(pct(100.) - px(40)),
+    focus([
+      outlineStyle(none),
+    ]),
+  ]);
+}
+
 /* greeting and children are props. `children` isn't used, therefore ignored.
    We ignore it by prepending it with an underscore */
 let make = (_children) => {
@@ -57,7 +75,7 @@ let make = (_children) => {
   },
 
   render: self => {
-    <div>
+    <>
       <p>
         {ReasonReact.string("Embedded ML v0.0.0, copyright Lesley Lai")}
       </p>
@@ -76,7 +94,7 @@ let make = (_children) => {
       <input
       autoFocus=true
       value=self.state.inputTest
-      style=(ReactDOMRe.Style.make(~color="#FFFFFF", ~background="#222", ~width="90%", ~border="none", ~fontSize="16px", ()))
+      className=Styles.input
       onKeyDown=(event => switch(ReactEvent.Keyboard.which(event)) {
         | 13 => self.send(Enter)
         | _ => ()
@@ -85,6 +103,6 @@ let make = (_children) => {
         self.send(InputText(ReactEvent.Form.target(event)##value));
       })
       />
-    </div>;
+    </>;
     },
 };
