@@ -20,7 +20,7 @@
   "namespace": true,
   "bs-dependencies": [
     "reason-react",
-    "bs-css"
+    "bs-css",
   ],
   "refmt": 3
 }

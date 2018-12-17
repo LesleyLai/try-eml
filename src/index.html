@@ -19,10 +19,34 @@
        display: inline-block;
        vertical-align: middle;
      }
+
+     button {
+       transition: color 0.1s ease-in 0s;
+     }
+
+     #run {
+       width: 100px;
+       height: 60px;
+       margin-left: 300px;
+
+       border-width: 0 0 5px 0;
+       border-bottom: 4px solid #78b087;
+
+       font-size: 18px;
+
+       color: #78b087;
+       background-color: #dceede;
+
+     }
+
+     #run:hover {
+       color: white;
+       background-color: #78b087;
+     }
      
      #cols {
        display: flex;
-       height: 100%;
+       height: calc(100% - 60px);
      }
 
      #editor-container {
@@ -61,6 +85,7 @@
     <header>
       <span>
         <h1>Try Embedded ML</h1>
+        <button id="run">run</button>
       </span>
     </header>
 
